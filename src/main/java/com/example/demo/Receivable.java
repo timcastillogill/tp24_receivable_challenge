@@ -1,30 +1,122 @@
 package com.example.demo;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
+
+import static javax.persistence.GenerationType.SEQUENCE;
 
 @Entity(name = "Receivable")
+@Table(name = "receivable",
+uniqueConstraints = {
+		@UniqueConstraint(name = "receivable_reference_unique", columnNames = "reference")
+})
 public class Receivable {
+
 	@Id
+	@SequenceGenerator(
+			name = "receivable_sequence",
+			sequenceName = "receivable_sequence",
+			allocationSize = 1
+	)
+	@GeneratedValue(
+			strategy = SEQUENCE,
+			generator = "receivable_sequence"
+	)
+	@Column(
+			name = "id",
+			updatable = false
+	)
 	private Long id;
+	@Column(
+			name = "reference",
+			nullable = false,
+			unique = true
+	)
 	private String reference;
+
+	@Column(
+			name = "currencyCode",
+			nullable = false
+	)
 	private String currencyCode;
+	@Column(
+			name = "issueDate",
+			nullable = false
+	)
 	private String issueDate;
+
+	@Column(
+			name = "openingValue",
+			nullable = false
+	)
 	private double openingValue;
+	@Column(
+			name = "paidValue",
+			nullable = false
+	)
 	private double paidValue;
+
+	@Column(
+			name = "dueDate",
+			nullable = false
+	)
 	private String dueDate;
+
+	@Column(
+			name = "closedDate"
+	)
 	private String closedDate;
+	@Column(
+			name = "cancelled",
+			columnDefinition = "boolean"
+	)
 	private boolean cancelled;
+
+	@Column(
+			name = "debtorName",
+			nullable = false
+	)
 	private String debtorName;
+
+	@Column(
+			name = "debtorReference",
+			nullable = false
+	)
 	private String debtorReference;
+
+	@Column(
+			name = "debtorAddress1"
+	)
 	private String debtorAddress1;
+	@Column(
+			name = "debtorAddress2"
+	)
 	private String debtorAddress2;
+	@Column(
+			name = "debtorTown"
+	)
 	private String debtorTown;
+	@Column(
+			name = "debtorState"
+	)
 	private String debtorState;
+
+	@Column(
+			name = "debtorZip"
+	)
 	private String debtorZip;
+	@Column(
+			name = "debtorCountryCode",
+			nullable = false
+	)
 	private String debtorCountryCode;
+
+	@Column(
+			name = "debtorRegistrationNumber"
+	)
 	private String debtorRegistrationNumber;
 
+	public Receivable() {
+	}
 	public Receivable(Long id,
 					  String reference,
 					  String currencyCode,
