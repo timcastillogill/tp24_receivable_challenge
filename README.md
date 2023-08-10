@@ -42,3 +42,14 @@ Example Payload
         "debtorRegistrationNumber": "string" //optional
     } 
 ]
+````
+---
+
+## How to Run The Tests
+
+1. Open in IntelliJ
+2. Right click on the directory `timcastillo.tp24.receivables` and select `Run Tests`
+
+## Time spent 
+
+Roughly 5 hours
