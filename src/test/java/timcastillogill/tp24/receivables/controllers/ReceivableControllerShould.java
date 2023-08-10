@@ -14,7 +14,10 @@ import timcastillogill.tp24.receivables.repository.ReceivableRepository;
 import java.util.Arrays;
 import java.util.List;
 
+import static org.mockito.Mockito.when;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @WebMvcTest(ReceivableController.class)
@@ -79,5 +82,20 @@ public class ReceivableControllerShould {
 						.content(payloadJSON)
 		);
 		resultActions.andExpect(status().isOk());
+	}
+
+	@Test
+	public void when_summary_endpoint_is_called_return_summary_statistics() throws Exception {
+		when(receivableRepository.sumOpenInvoiceValue()).thenReturn(12345.67);
+		when(receivableRepository.sumClosedInvoiceValue()).thenReturn(987.54);
+
+		ResultActions resultActions = mockMvc.perform(
+				get("/summary")
+						.contentType(MediaType.APPLICATION_JSON)
+		);
+		resultActions
+				.andExpect(status().isOk())
+				.andExpect(jsonPath("$.totalOpenValue").value(12345.67))
+				.andExpect(jsonPath("$.totalClosedValue").value(987.54));
 	}
 }
