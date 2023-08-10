@@ -1,4 +1,4 @@
-package com.tp24.receivables.models;
+package timcastillogill.tp24.receivables.models;
 
 import javax.persistence.*;
 

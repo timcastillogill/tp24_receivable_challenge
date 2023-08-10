@@ -1,6 +1,6 @@
-package com.tp24.receivables.repository;
+package timcastillogill.tp24.receivables.repository;
 
-import com.tp24.receivables.models.Receivable;
+import timcastillogill.tp24.receivables.models.Receivable;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface ReceivableRepository extends JpaRepository<Receivable, Long> {
