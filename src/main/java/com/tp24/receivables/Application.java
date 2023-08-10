@@ -1,5 +1,7 @@
 package com.tp24.receivables;
 
+import com.tp24.receivables.models.Receivable;
+import com.tp24.receivables.repository.ReceivableRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
