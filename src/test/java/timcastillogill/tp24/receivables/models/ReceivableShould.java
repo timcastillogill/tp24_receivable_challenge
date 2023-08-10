@@ -1,20 +1,22 @@
-package timcastillogill.tp24.receivables;
+package timcastillogill.tp24.receivables.models;
 
-import timcastillogill.tp24.receivables.models.Receivable;
-import timcastillogill.tp24.receivables.repository.ReceivableRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
-import static org.assertj.core.api.Assertions.*;
+import timcastillogill.tp24.receivables.repository.ReceivableRepository;
 
 import javax.transaction.Transactional;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 @DataJpaTest
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 public class ReceivableShould {
 
-	@Autowired private ReceivableRepository receivableRepository;
+	@Autowired
+	private ReceivableRepository receivableRepository;
+
 	@Test
 	@Transactional
 	public void given_a_payload_of_one_receivable_it_should_add_data_to_the_receivable_table() {
