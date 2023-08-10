@@ -1,4 +1,4 @@
-package com.example.demo;
+package com.tp24.receivables;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

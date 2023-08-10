@@ -1,4 +1,4 @@
-package com.example.demo;
+package com.tp24.receivables;
 
 import javax.persistence.*;
 
@@ -6,9 +6,9 @@ import static javax.persistence.GenerationType.SEQUENCE;
 
 @Entity(name = "Receivable")
 @Table(name = "receivable",
-uniqueConstraints = {
-		@UniqueConstraint(name = "receivable_reference_unique", columnNames = "reference")
-})
+		uniqueConstraints = {
+				@UniqueConstraint(name = "receivable_reference_unique", columnNames = "reference")
+		})
 public class Receivable {
 
 	@Id
@@ -115,27 +115,25 @@ public class Receivable {
 	)
 	private String debtorRegistrationNumber;
 
-	public Receivable() {
-	}
-	public Receivable(Long id,
-					  String reference,
-					  String currencyCode,
-					  String issueDate,
-					  double openingValue,
-					  double paidValue,
-					  String dueDate,
-					  String closedDate,
-					  boolean cancelled,
-					  String debtorName,
-					  String debtorReference,
-					  String debtorAddress1,
-					  String debtorAddress2,
-					  String debtorTown,
-					  String debtorState,
-					  String debtorZip,
-					  String debtorCountryCode,
-					  String debtorRegistrationNumber) {
-		this.id = id;
+
+	public Receivable(
+			String reference,
+			String currencyCode,
+			String issueDate,
+			double openingValue,
+			double paidValue,
+			String dueDate,
+			String closedDate,
+			boolean cancelled,
+			String debtorName,
+			String debtorReference,
+			String debtorAddress1,
+			String debtorAddress2,
+			String debtorTown,
+			String debtorState,
+			String debtorZip,
+			String debtorCountryCode,
+			String debtorRegistrationNumber) {
 		this.reference = reference;
 		this.currencyCode = currencyCode;
 		this.issueDate = issueDate;
@@ -153,6 +151,9 @@ public class Receivable {
 		this.debtorZip = debtorZip;
 		this.debtorCountryCode = debtorCountryCode;
 		this.debtorRegistrationNumber = debtorRegistrationNumber;
+	}
+
+	public Receivable() {
 	}
 
 	public Long getId() {
